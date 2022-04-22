@@ -4,69 +4,74 @@
     <meta charset="UTF-8">
     <style>
 
-        h1.id0
-        {
-            text-align:center;
+        h1.id0 {
+            text-align: center;
         }
-        p.date
-        {
-            text-align:right;
+
+        p.date {
+            text-align: right;
         }
-        p.main
-        {
-            text-align:justify;
+
+        p.main {
+            text-align: justify;
         }
     </style>
     <title>js基础使用</title>
 </head>
 <!--     onload 事件可用于检测访问者的浏览器类型和浏览器版本，并基于这些信息来加载网页的正确版本。-->
 <body>
-    <p id="id1">原来的内容:小小年纪谈起理想一串串</p>
-    <p id="id2">原来的内容:小小年纪谈起理想一串串</p>
-    <h1 id="id3">我的标题1</h1>
-    <button onclick="document.getElementById('id3').style.color='red'">点我 “我的标题1“  就会变色</button>
-    <h1 onclick="changeText(this)">点击文本</h1>
-    <button onclick="displayDate1(this)">点击->显示时间</button><br><br>
-    <button onclick="displayDate2()">点击->显示时间</button>
-    <p id="id4"></p>
-    <p id="id5"></p>
-    输入你的名字:<input id="id6" type="text" onchange="upper()">
+<p id="id1">原来的内容:小小年纪谈起理想一串串</p>
+<p id="id2">原来的内容:小小年纪谈起理想一串串</p>
+<h1 id="id3">我的标题1</h1>
+<button onclick="document.getElementById('id3').style.color='red'">点我 “我的标题1“ 就会变色</button>
+<h1 onclick="changeText(this)">点击文本</h1>
+<button onclick="displayDate1(this)">点击->显示时间</button>
+<br><br>
+<button onclick="displayDate2()">点击->显示时间</button>
+<p id="id4"></p>
+<p id="id5"></p>
+输入你的名字:<input id="id6" type="text" onchange="upper()">
 
-    <h1 class="id0">CSS text-align 实例</h1>
-    <p class="date">2015 年 3 月 14 号</p>
-    <p class="main">“当我年轻的时候，我梦想改变这个世界；当我成熟以后，我发现我不能够改变这个世界，我将目光缩短了些，决定只改变我的国家；当我进入暮年以后，我发现我不能够改变我们的国家，我的最后愿望仅仅是改变一下我的家庭，但是，这也不可能。当我现在躺在床上，行将就木时，我突然意识到：如果一开始我仅仅去改变我自己，然后，我可能改变我的家庭；在家人的帮助和鼓励下，我可能为国家做一些事情；然后，谁知道呢?我甚至可能改变这个世界。”</p>
+<h1 class="id0">CSS text-align 实例</h1>
+<p class="date">2015 年 3 月 14 号</p>
+<p class="main">
+    “当我年轻的时候，我梦想改变这个世界；当我成熟以后，我发现我不能够改变这个世界，我将目光缩短了些，决定只改变我的国家；当我进入暮年以后，我发现我不能够改变我们的国家，我的最后愿望仅仅是改变一下我的家庭，但是，这也不可能。当我现在躺在床上，行将就木时，我突然意识到：如果一开始我仅仅去改变我自己，然后，我可能改变我的家庭；在家人的帮助和鼓励下，我可能为国家做一些事情；然后，谁知道呢?我甚至可能改变这个世界。”</p>
 
 
-
-    <script>
-    <!--  重写文本信息  -->
-        document.getElementById("id2").innerHTML="script脚本修改后内容:重写新的文本信息至HTML";
+<script>
+    <!--
+    重写文本信息  -->
+    document.getElementById("id2").innerHTML = "script脚本修改后内容:重写新的文本信息至HTML";
     <!--  修改css  -->
-        document.getElementById("id2").style.color="pink";
-        document.getElementById("id2").style.fontFamily="Arial";
-        document.getElementById("id2").style.fontSize="larger";
-        
-        function changeText(id) {
-            id.innerHTML="hahaha";
+    document.getElementById("id2").style.color = "pink";
+    document.getElementById("id2").style.fontFamily = "Arial";
+    document.getElementById("id2").style.fontSize = "larger";
+
+    function changeText(id) {
+        id.innerHTML = "hahaha";
+    }
+
+    function displayDate1(id) {
+        id.innerHTML = Date();
+    }
+
+    function displayDate2() {
+        document.getElementById("id5").innerHTML = Date();
+    }
+
+    function checkCookies() {
+        if (navigator.cookieEnabled == true) {
+            alert("onload 事件可用于检测访问者的浏览器类型和浏览器版本，并基于这些信息来加载网页的正确版本。Cookies 可用");
+        } else {
+            alert("Cookies 不可用");
         }
-        function displayDate1(id) {
-            id.innerHTML=Date();
-        }
-        function displayDate2() {
-            document.getElementById("id5").innerHTML=Date();
-        }
-        function checkCookies() {
-            if (navigator.cookieEnabled==true){
-                alert("onload 事件可用于检测访问者的浏览器类型和浏览器版本，并基于这些信息来加载网页的正确版本。Cookies 可用");
-            }else {
-                alert("Cookies 不可用");
-            }
-        }
-        function upper() {
-            let x = document.getElementById("id6");
-            x.value = x.value.toUpperCase();
-        }
-    </script>
+    }
+
+    function upper() {
+        let x = document.getElementById("id6");
+        x.value = x.value.toUpperCase();
+    }
+</script>
 
 
 </body>
