@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>新建事项</title>
+</head>
+<body>
+<!--最上面一行 输入框+新建任务按钮-->
+    <div class="nav">
+        <input type="text" id="input">
+        <button onclick="insertTask()">新建任务</button>
+    </div>
+<!--下面包含左右两部分的内容区域-->
+    <div class="container">
+<!--    左边部分    -->
+        <div class="todo">
+            <h3>未完成</h3>
+<!--            这只是一个示例  内容要按照它这个模板来构造-->
+<!--            <div class="row">-->
+<!--                <input type="checkbox">-->
+<!--                <span>吃饭</span>-->
+<!--                <button>删除</button>-->
+<!--            </div>-->
+        </div>
+<!--    右侧部分    -->
+        <div class="done">
+            <h3>已完成</h3>
+        </div>
+    </div>
+<style>
+    /* 去除网页默认设置*/
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .nav{
+        /*background-color: orange;*/
+        width: 800px;
+        height: 100px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+    }
+    .nav input{
+        height: 50px;
+        width: 600px;
+        padding: 10px;
+    }
+    .nav button{
+        height: 50px;
+        width: 200px;
+        background-color: orange;
+        border-radius: 5px;
+        border: 0;
+    }
+    /*激活按键后 变色*/
+    .nav button:active{
+        background-color: brown;
+    }
+    .container{
+        /*background-color: antiquewhite;*/
+        width: 800px;
+        height: 800px;
+        margin: 0 auto;
+        /*为了使左右两个div模块展示在一行，需要设置父类div弹性布局*/
+        display: flex;
+    }
+    .todo{
+        /*background-color: burlywood;*/
+        width: 50%;
+        height: 100%;
+    }
+    .row{
+        height: 50px;
+        display: flex;
+        align-items: center;
+    }
+    .row input{
+        /*设置上下外边距为0  设置左右外边距为10px*/
+        margin: 0 10px;
+    }
+    .row span{
+        width: 330px;
+    }
+    .done{
+        /*background-color: brown;*/
+        width: 50%;
+        height: 100%;
+    }
+    .container h3{
+        background-color: black;
+        color: white;
+        height: 50px;
+        /*文字居中*/
+        text-align: center;
+        /*行高*/
+        line-height: 50px;
+    }
+</style>
+<script>
+<!--  获取新增按钮  -->
+    let allTaskButton = document.querySelector(".nav button");
+    //  设置button点击事件
+    allTaskButton.onclick = function () {
+    //    获取到输入框内容
+        let input = document.querySelector(".nav input");
+        let taskContents = input.value;
+        if (taskContents == ""){
+            console.log("当前任务为空，不能新建任务!")
+            return;
+        }
+    //    获取到内容后就要创建元素,按照将要放置的位置那边的元素格式创建
+        let row = document.createElement("div");
+        row.className="row";
+        let checkbox = document.createElement("input");
+        checkbox.type="checkbox";
+        let span = document.createElement("span");
+        span.innerHTML=taskContents;
+        let button = document.createElement("button");
+        button.innerHTML="删除";
+    //    放入DOM树中
+        row.appendChild(checkbox);
+        row.appendChild(span);
+        row.appendChild(button);
+    //  还要将row 放入他的上一级div中 （我理解应为他是最底层的div，虽然创建好了元素 但是不知道去哪里挂在它，所以这里就需要在往上找一层）
+        let todo = document.querySelector(".todo");
+        todo.appendChild(row);
+    //    点击新建后 清空输入框
+        input.value = "";
+
+    //    加入复选框触发事件
+        checkbox.onclick=function () {
+            if (checkbox.checked){
+                let done = document.querySelector(".done");
+                done.appendChild(row);
+            }else{
+                todo.appendChild(row);
+            }
+        }
+
+    //    加入删除按钮的触发事件
+        button.onclick=function () {
+            row.remove();
+        }
+    }
+</script>
+</body>
+</html>

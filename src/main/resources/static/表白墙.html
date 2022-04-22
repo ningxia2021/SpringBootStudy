@@ -62,7 +62,6 @@
     </style>
 </head>
 <body>
-
 <div class="container">
     <h1>表白墙</h1>
     <p>输入后点击提交，会将信息显示在墙上</p>
@@ -85,24 +84,25 @@
 <script>
     let submit = document.querySelector('#submit');
     submit.onclick=function () {
-        //获取到编辑框的内容
+        // 获取到编辑框的内容
         let edit = document.querySelectorAll(".edit");
         let from = edit[0].value;
         let to = edit[1].value;
         let message = edit[2].value;
+        // 控制台观察一波数据
         console.log(from +","+ to +","+ message);
-        //对用户输入做一个简单的校验
+        // 对用户输入做一个简单的校验
         if (from == "" || to == "" || message == ""){
             return;
         }
-        //    构造HTML 元素
+        // 构造HTML 元素
         let row = document.createElement("div");//创建元素div
         row.className = "row";//为元素获取类属性
-        row.innerHTML = from + " 对 " + to + " 说 " + message;
+        row.innerHTML = from + " 对 " + to + " 说 " + message;//div中展示在html上的内容构造
         // 把这个元素添加到dom树上
         let container = document.querySelector(".container");
         container.appendChild(row);
-    //    清空原来的输入框
+        // 清空原来的输入框
         for (let i =0;i<edit.length;i++){
             edit[i].value = "";
         }
