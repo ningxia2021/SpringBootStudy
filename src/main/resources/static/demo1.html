@@ -18,13 +18,12 @@
     </style>
     <title>js基础使用</title>
 </head>
-<!--     onload 事件可用于检测访问者的浏览器类型和浏览器版本，并基于这些信息来加载网页的正确版本。-->
 <body>
 <p id="id1">原来的内容:小小年纪谈起理想一串串</p>
 <p id="id2">原来的内容:小小年纪谈起理想一串串</p>
 <h1 id="id3">我的标题1</h1>
 <button onclick="document.getElementById('id3').style.color='red'">点我 “我的标题1“ 就会变色</button>
-<h1 onclick="changeText(this)">点击文本</h1>
+<h1 onclick="changeText()">点击文本</h1>
 <button onclick="displayDate1(this)">点击->显示时间</button>
 <br><br>
 <button onclick="displayDate2()">点击->显示时间</button>
@@ -39,19 +38,18 @@
 
 
 <script>
-    <!--
-    重写文本信息  -->
+    <!-- 重写文本信息  -->
     document.getElementById("id2").innerHTML = "script脚本修改后内容:重写新的文本信息至HTML";
     <!--  修改css  -->
     document.getElementById("id2").style.color = "pink";
     document.getElementById("id2").style.fontFamily = "Arial";
     document.getElementById("id2").style.fontSize = "larger";
 
-    function changeText(id) {
-        id.innerHTML = "hahaha";
+    function changeText() {
+        document.getElementById("id4").innerHTML = "hahaha";
     }
 
-    function displayDate1(id) {
+    function displayDate1() {
         id.innerHTML = Date();
     }
 
