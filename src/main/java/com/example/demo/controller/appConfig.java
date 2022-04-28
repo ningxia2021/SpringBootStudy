@@ -9,6 +9,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * 配置类
  */
 @Configuration
+/**
+ * 实现 WebMvcConfigurer接口 是因为他可以配置拦截器 因此，目前appConfig这个主要实现拦截器的配置
+ */
 public class appConfig implements WebMvcConfigurer {
 
     /**
@@ -30,7 +33,11 @@ public class appConfig implements WebMvcConfigurer {
          * addPathPatterns("/**")                     拦截所有路由
          * excludePathPatterns("/api/user/index1")     除了index1
          * 效果：只有index1可以被访问，其他地址均无响应
+         * 可以添加多个excludePathPatterns("/xx)
          */
-        registry.addInterceptor(new loginInterceptor()).addPathPatterns("/**").excludePathPatterns("/api/user/index1");   // '/**'表示拦截所有路径
+        registry.addInterceptor(new loginInterceptor()).addPathPatterns("/**").
+                excludePathPatterns("/api/user/index1").            // '/**'表示拦截所有路径
+                excludePathPatterns("/api/user/getuserjson").
+                excludePathPatterns("/**/*.html");                  // 排除静态页面
     }
 }
