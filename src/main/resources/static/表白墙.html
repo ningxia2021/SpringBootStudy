@@ -11,9 +11,15 @@
             box-sizing: border-box;
         /*大容器居中 并设置宽度*/
         }
+        .board{
+            background-color: skyblue;
+            height: 100%;
+            width: 100%;
+        }
         .container{
             width: 400px;
             margin: 0 auto;
+            /*background-color: skyblue;*/
         }
         /*设置标题*/
         h1{
@@ -62,23 +68,25 @@
     </style>
 </head>
 <body>
-<div class="container">
-    <h1>表白墙</h1>
-    <p>输入后点击提交，会将信息显示在墙上</p>
-    <div class="row">
-        <span>谁</span>
-        <input type="text" class="edit">
-    </div>
-    <div class="row">
-        <span>对谁</span>
-        <input type="text" class="edit">
-    </div>
-    <div class="row">
-        <span>说什么</span>
-        <input type="text" class="edit">
-    </div>
-    <div>
-        <input type="button" value="提交" id="submit">
+<div class="board">
+    <div class="container">
+        <h1>表白墙</h1>
+        <p>输入后点击提交，会将信息显示在墙上</p>
+        <div class="row">
+            <span>谁</span>
+            <input type="text" class="edit">
+        </div>
+        <div class="row">
+            <span>对谁</span>
+            <input type="text" class="edit">
+        </div>
+        <div class="row">
+            <span>说什么</span>
+            <input type="text" class="edit">
+        </div>
+        <div>
+            <input type="button" value="提交" id="submit">
+        </div>
     </div>
 </div>
 <script>
